@@ -1,14 +1,14 @@
 module.exports = {
     common: {
-        cssPathPrefix: '/',
-        jsPathPrefix: '/',
+        cssPathPrefix: '/css/',
+        jsPathPrefix: '/js/',
     },
     category: {
-        css: 'category.9217d77c',
-        js: 'category.58aa626c',
+        css: 'category',
+        js: 'category',
     },
     product: {
-        css: 'product.828faa20',
-        js: 'product.58aa626c',
+        css: 'product',
+        js: 'product',
     }
 }
