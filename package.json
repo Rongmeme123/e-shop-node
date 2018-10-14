@@ -25,13 +25,11 @@
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "koa-views": "^6.1.4"
+    "koa-views": "^6.1.4",
+    "mysql": "^2.16.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "cssnano": "^4.1.4",
-    "node-sass": "^4.9.3",
-    "nodemon": "^1.18.4",
-    "shelljs": "^0.8.2"
+    "nodemon": "^1.18.4"
   }
 }

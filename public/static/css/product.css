@@ -1,0 +1,113 @@
+@import './base.css';
+@import './header.css';
+@import './nav.css';
+@import './footer.css';
+
+.product-intro {
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.preview-wrap {
+    width: 450px;
+    float: left;
+}
+
+.info-wrap {
+    width: 520px;
+    float: right;
+}
+
+.info-wrap .sku-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.info-wrap .summary {
+    margin-top: 20px;
+    padding: 30px 20px;
+    background: #f3f3f3;
+}
+
+.info-wrap .summary .price {
+    font-size: 40px;
+}
+
+.info-wrap .summary .price strong {
+    color: #f22e00;
+}
+
+.info-wrap .counter {
+    margin-top: 20px;
+}
+
+.info-wrap .counter .counter-btn {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 35px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 25px;
+    border-radius: 50%;
+    background: #09b8fd;
+    cursor: pointer;
+}
+
+.info-wrap .counter .counter-btn:hover {
+    background: #0795ce;
+}
+
+.info-wrap .counter .counter-input {
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.info-wrap .btns {
+    margin-top: 20px;
+}
+
+.info-wrap .btns .btn-big {
+    width: 200px;
+    height: 60px;
+    font-size: 25px;
+}
+
+.info-wrap .btns .btn-buy {
+    background: #f35656;
+}
+
+.info-wrap .btns .btn-buy:hover {
+    background: #ca3636;
+}
+
+.product-detail {
+    margin-top: 30px;
+    padding-top: 10px;
+    height: 200px;
+    border-top: 1px solid #ddd;
+}
+
+.product-detail .tab-hd {
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.product-detail .tab-hd .tab.active {
+    background: #f3f3f3;
+    border-bottom: 1px solid #ccc;
+}
+
+.product-detail .tab-hd .tab:hover {
+    background: #f3f3f3;
+}
+
+.product-detail .tab-bd {
+    padding: 8px 15px;
+}

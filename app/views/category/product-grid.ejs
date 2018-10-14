@@ -1,54 +1,28 @@
 <ul class="grid">
-    <li class="g-item">
-        <a class="g-item-wrap" href="./product.html">
-            <div class="p-img">
-                <img src="./images/goods/iphonexs_max.jpg" alt="">
-            </div>
-            <div class="p-price">
-                <strong>$2000</strong>
-            </div>
-            <div class="p-des">
-                <em>
-                    Apple iphone XS Max (A2104) 64GB 金色 移动联通电信4G手机 双卡双待
-                </em>
-            </div>
-            <div class="p-tools">
-                <ul class="tags">
-                    <li>
-                        <em>新品</em>
-                    </li>
-                    <li>
-                        <em>打折</em>
-                    </li>
-                </ul>
-                <input class="btn btn-add" type="button" value="addToCart" />
-            </div>
-        </a>
-    </li>
-    <li class="g-item">
-        <a class="g-item-wrap" href="./product.html">
-            <div class="p-img">
-                <img src="./images/goods/iphonexs_max.jpg" alt="">
-            </div>
-            <div class="p-price">
-                <strong>$2000</strong>
-            </div>
-            <div class="p-des">
-                <em>
-                    Apple iphone XS Max (A2104) 64GB 金色 移动联通电信4G手机 双卡双待
-                </em>
-            </div>
-            <div class="p-tools">
-                <ul class="tags">
-                    <li>
-                        <em>新品</em>
-                    </li>
-                    <li>
-                        <em>打折</em>
-                    </li>
-                </ul>
-                <input class="btn btn-add" type="button" value="addToCart" />
-            </div>
-        </a>
-    </li>
+    <%products.forEach(function(item){%>
+        <li class="g-item">
+            <a class="g-item-wrap" href="./product/<%=item.pid%>">
+                <div class="p-img">
+                    <img src="./images/goods/iphonexs_max.jpg" alt="">
+                </div>
+                <div class="p-price">
+                    <strong>$<%=item.price%></strong>
+                </div>
+                <div class="p-des">
+                    <em><%=item.description%></em>
+                </div>
+                <div class="p-tools">
+                    <ul class="tags">
+                        <li>
+                            <em>新品</em>
+                        </li>
+                        <li>
+                            <em>打折</em>
+                        </li>
+                    </ul>
+                    <input class="btn btn-add" type="button" value="addToCart" />
+                </div>
+            </a>
+        </li>
+    <%})%>
 </ul>

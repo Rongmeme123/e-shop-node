@@ -6,7 +6,15 @@
     <div class="container">
         <% include ../common/side-nav %>
         <div class="main">
-            <% include ../common/bread-crumb %>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">Home</a>
+                    <span class="arrow">></span>
+                </li>
+                <li>
+                    <a class="active" href="javascript:;"><%=currentCategory.name%></a>
+                </li>
+            </ul>
             <% include ./product-grid %>
         </div>
     </div>

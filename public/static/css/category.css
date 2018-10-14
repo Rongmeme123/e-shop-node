@@ -1,0 +1,78 @@
+@import './base.css';
+@import './header.css';
+@import './nav.css';
+@import './footer.css';
+
+.grid {
+    margin-top: 20px;
+}
+
+.grid .g-item {
+    width: 240px;
+    height: 350px;
+    float: left;
+    margin: 0 2px 20px 2px;
+    background-color: #ffffff;
+}
+
+.grid .g-item:hover {
+    box-shadow: 0 0 2px 2px #eee;
+    z-index: 1;
+    transition: all .5s ease;
+}
+
+.grid .g-item-wrap {
+    display: block;
+    width: 230px;
+    padding: 0 7px;
+}
+
+.grid .p-img {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.grid .p-price {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.grid .p-price strong {
+    font-family: Verdana;
+    font-weight: 400;
+    color: #f22e00;
+}
+
+.grid .p-des {
+    margin-bottom: 10px;
+}
+
+.grid .p-tools {
+    overflow: hidden;
+}
+
+.grid .p-tools .tags {
+    float: left;
+    overflow: hidden;
+}
+
+.grid .p-tools .tags li {
+    float: left;
+    margin-left: 2px;
+    padding: 3px 2px;
+    background-color: #eee;
+}
+
+.grid .p-tools .tags li:nth-child(1) {
+    background-color: #ff5151;
+    color: white;
+}
+
+.grid .p-tools .tags li:nth-child(2) {
+    background-color: #ff5151;
+    color: white;
+}
+
+.grid .p-tools .btn {
+    float: right;
+}

@@ -18,7 +18,7 @@ app.use(views(path.join(__dirname, 'views'), {
 }));
 
 // apply static
-app.use(kstatic(path.resolve(__dirname, '../public/dist')));
+app.use(kstatic(path.resolve(__dirname, '../public/static')));
 
 // apply router
 app.use(router.routes());

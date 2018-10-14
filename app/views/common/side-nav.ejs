@@ -1,14 +1,7 @@
 <nav class="nav">
     <ul class="category">
-        <li class="item">category 1</li>
-        <li class="item">category 2</li>
-        <li class="item">category 3</li>
-        <li class="item">category 4</li>
-        <li class="item">category 5</li>
-        <li class="item">category 6</li>
-        <li class="item">category 7</li>
-        <li class="item">category 8</li>
-        <li class="item">category 9</li>
-        <li class="item">category 10</li>
+        <% categories.forEach((item, index) => {%>
+            <li class="item<%=currentCategory.catid==item.catid&&page==='category'?' active':''%>" data-catid=<%= item.catid %>><%= item.name %></li>
+        <% }) %>
     </ul>
 </nav>
