@@ -1,0 +1,64 @@
+$btn-color: #09b8fd;
+$btn-hover-color: #0795ce;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,sans-serif;
+    color: #333;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+em, i, u {
+    font-style: normal;
+}
+
+input[type=button] {
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.btn {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: $btn-color;
+    color: white;
+    &:hover {
+        background-color: $btn-hover-color;
+    }
+}
+
+.tabs {
+    .tab-hd {
+        display: flex;
+        .tab {
+            float: left;
+            flex: 1;
+            text-align: center;
+        }
+    }
+}

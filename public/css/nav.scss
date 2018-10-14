@@ -1,0 +1,39 @@
+$nav-item-active-color: #f0f0f0;
+
+.nav {
+    float: left;
+    height: 500px;
+    width: 200px;
+    background-color: #ffffff;
+    .category {
+        padding-top: 8px;
+        .item {
+            height: 30px;
+            line-height: 30px;
+            padding-left: 20px;
+            cursor: pointer;
+            &:hover {
+                background-color: $nav-item-active-color;
+            }
+        }
+    }
+}
+
+.main {
+    width: 990px;
+    margin-left: 210px;
+}
+
+.breadcrumb {
+    height: 30px;
+    line-height: 30px;
+    background: #f0f0f0;
+    overflow: hidden;
+    li {
+        float: left;
+        margin-left: 5px;
+        .arrow {
+            margin: 0 0 0 5px;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "e-shop-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app/bin/www.js",
+    "devFe": "parcel public/index.html",
+    "buildFe": "rm -rf public/dist && parcel build public/index.html -d public/dist --no-cache --no-source-maps",
+    "pm2pro": "pm2 start pm2.json && pm2 web",
+    "pm2kill": "pm2 delete all"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "ejs": "^2.6.1",
+    "koa": "^2.5.3",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.1.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "cssnano": "^4.1.4",
+    "node-sass": "^4.9.3",
+    "nodemon": "^1.18.4"
+  }
+}
