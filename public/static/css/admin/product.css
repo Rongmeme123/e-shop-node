@@ -1,0 +1,9 @@
+@import './dashboard.css';
+
+.table-title {
+    margin: 20px 0;
+}
+
+.table-title .btn-new {
+    float: right;
+}

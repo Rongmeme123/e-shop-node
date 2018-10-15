@@ -1,7 +1,0 @@
-<nav class="nav">
-    <ul class="category">
-        <% categories.forEach((item, index) => {%>
-            <li class="item<%=currentCategory.catid==item.catid&&page==='category'?' active':''%>" data-catid=<%= item.catid %>><%= item.name %></li>
-        <% }) %>
-    </ul>
-</nav>

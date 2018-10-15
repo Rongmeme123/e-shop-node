@@ -1,4 +1,4 @@
-@import './base.css';
+@import '../base.css';
 @import './header.css';
 @import './nav.css';
 @import './footer.css';
@@ -44,7 +44,17 @@
 }
 
 .grid .p-des {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+
+.mult-line-ellipsis {
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    width:100%;
 }
 
 .grid .p-tools {

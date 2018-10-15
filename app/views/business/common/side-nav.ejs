@@ -1,0 +1,9 @@
+<nav class="nav">
+    <ul class="category">
+        <% categories.forEach((item, index) => {%>
+            <li class="item<%=currentCategory.catid==item.catid&&page==='category'?' active':''%>">
+                <a href="/?catid=<%= item.catid %>"><%= item.name %></a>
+            </li>
+        <% }) %>
+    </ul>
+</nav>

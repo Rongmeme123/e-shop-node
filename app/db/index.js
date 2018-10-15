@@ -12,6 +12,7 @@ exports.release = function(connection) {
 };
 
 exports.query = function(sql, values) {
+    console.time(`sql exec ${sql}`);
     return new Promise((resolve, reject) => {
         pool.getConnection(function(err, connection) {
             if (err) {
@@ -20,8 +21,9 @@ exports.query = function(sql, values) {
                 // Use the connection
                 connection.query({
                     sql: sql,
-                    timeout: 5000,
+                    timeout: 20000,
                 }, values, function(error, results, fields) {
+                    console.timeEnd(`sql exec ${sql}`);
                     if (error) {
                         console.log('DB-执行查询语句异常！');
                         reject(error);
