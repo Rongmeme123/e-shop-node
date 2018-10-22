@@ -11,7 +11,9 @@ const webRoutes = require('./routes');
 
 
 // apply body parser
-app.use(bodyParser());
+app.use(bodyParser({
+    "formLimit": "10mb",
+}));
 
 // apply ejs view template
 app.use(views(path.join(__dirname, 'views'), {

@@ -12,7 +12,8 @@ router.get('/', async (ctx, next) => {
     if(!currentCategory) currentCategory = categories[0];
     // redirect to the first category
     if (!catid) {
-        ctx.redirect(`/?catid=${currentCategory.catid}`)
+        await ctx.redirect(`/?catid=${currentCategory.catid}`)
+        return;
     }
     
     const products = await productService.queryProductsByCatid(currentCategory.catid);
@@ -20,25 +21,45 @@ router.get('/', async (ctx, next) => {
     await ctx.render('business/category', {
         title: 'category page',
         page: 'category',
-        css: '/css/business/category',
-        js: '/js/business/category',
+        css: '/css/businessCategory',
+        js: '/js/businessCategory',
         categories,
         products,
         currentCategory,
     });
 });
 
-router.get('/product/:pid', async (ctx, next) => {
+router.get('/product', async (ctx, next) => {
+    const pid = parseInt(ctx.query.pid);
+    if (!pid) {
+        await ctx.redirect('/');
+        return;
+    }
+
     const categories = await categoryService.queryAll();
-    let product = await productService.queryOneByPid(ctx.params.pid);
+    let product = await productService.queryOneByPid(pid);
     product = product[0]
-    const currentCategory = categories.filter((item) => item.catid === product.catid)[0];
+    
+    let currentCategory = {};
+    if (!product) {
+        currentCategory = categories.filter((item) => item.catid === product.catid)[0];
+    } else {
+        currentCategory = {
+            pid: 0,
+            catid: 0,
+            name: '',
+            price: 0,
+            description: '',
+            pic_big: 0,
+            pic_small: 0
+        }
+    }
 
     await ctx.render('business/product', {
         title: 'product page',
         page: 'product',
-        css: '/css/business/product',
-        js: '/js/business/product',
+        css: '/css/businessProduct',
+        js: '/js/businessProduct',
         categories,
         product,
         currentCategory,
@@ -51,8 +72,8 @@ router.get('/admin', async (ctx, next) => {
     await ctx.render('admin', {
         title: 'admin page',
         page: 'admin',
-        css: '/css/admin/index',
-        js: '/js/admin/index',
+        css: '/css/admin',
+        js: '/js/admin',
     });
 });
 
@@ -62,8 +83,8 @@ router.get('/admin/category', async (ctx, next) => {
     await ctx.render('admin/category', {
         title: 'admin category page',
         page: 'category',
-        css: '/css/admin/category',
-        js: '/js/admin/category',
+        css: '/css/adminCategory',
+        js: '/js/adminCategory',
         categories,
     });
 });
@@ -75,8 +96,8 @@ router.get('/admin/product', async (ctx, next) => {
     await ctx.render('admin/product', {
         title: 'admin product page',
         page: 'product',
-        css: '/css/admin/product',
-        js: '/js/admin/product',
+        css: '/css/adminProduct',
+        js: '/js/adminProduct',
         products,
         categories,
     });

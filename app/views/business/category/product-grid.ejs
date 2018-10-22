@@ -1,9 +1,9 @@
 <ul class="grid">
     <%products.forEach(function(item){%>
         <li class="g-item">
-            <a class="g-item-wrap" href="./product/<%=item.pid%>">
+            <a class="g-item-wrap" href="./product?pid=<%=item.pid%>">
                 <div class="p-img">
-                    <img src="./images/goods/iphonexs_max.jpg" alt="">
+                    <img src="<%=item.image_thumbnail%>" alt="">
                 </div>
                 <div class="p-price">
                     <strong>$<%=item.price%></strong>

@@ -5,8 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app/bin/www.js",
-    "devFe": "parcel public/index.html",
-    "buildFe": "node public/beautifyDist",
     "pm2pro": "pm2 start pm2.json && pm2 web",
     "pm2kill": "pm2 delete all"
   },
@@ -21,6 +19,8 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "ejs": "^2.6.1",
+    "formidable": "^1.2.1",
+    "gm": "^1.23.1",
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",

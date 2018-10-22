@@ -28,7 +28,7 @@ $('#deleteModal').on('show.bs.modal', function(event) {
     });
 });
 
-editModal
+// editModal
 $('#editModal').on('show.bs.modal', function(event) {
     var modal = $(this);
     var button = $(event.relatedTarget);
@@ -39,7 +39,7 @@ $('#editModal').on('show.bs.modal', function(event) {
         pid = tr.find('td:eq(0)').text();
         var name = tr.find('td:eq(2)').text();
         var price = tr.find('td:eq(3)').text();
-        var description = tr.find('td:eq(4)').text();
+        var description = tr.find('td:eq(5)').text();
         console.log(name, price, description)
         modal.find('#pdNameInput').val(name);
         modal.find('#pdPriceInput').val(price);
@@ -54,13 +54,23 @@ $('#editModal').on('show.bs.modal', function(event) {
         modal.modal('hide');
     });
     modal.find('._ok').off('click').on('click', function() {
-        axios.post('/api/updateProduct', {
-            pid: pid,
-            catid: $('#catSelect option:selected').data('id'),
-            name: modal.find('#pdNameInput').val(),
-            price: modal.find('#pdPriceInput').val(),
-            description: modal.find('#pdDesTextarea').val()
+        let formData = new FormData($('#productForm')[0]);
+        pid && formData.append('pid', pid);
+        axios({
+            url: '/api/updateProduct',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            data: formData
         })
+        // axios.post('/api/updateProduct', {
+        //     pid: pid,
+        //     catid: $('#catSelect').val(),
+        //     name: modal.find('#pdNameInput').val(),
+        //     price: modal.find('#pdPriceInput').val(),
+        //     description: modal.find('#pdDesTextarea').val()
+        // })
         .then(function(response) {
             if (response.data && response.data.code === 200){
                 // console.log(response.data)

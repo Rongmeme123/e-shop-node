@@ -1,15 +1,10 @@
-@import '../base.css';
-@import './header.css';
-@import './nav.css';
-@import './footer.css';
-
 .grid {
     margin-top: 20px;
 }
 
 .grid .g-item {
     width: 240px;
-    height: 350px;
+    height: 220px;
     float: left;
     margin: 0 2px 20px 2px;
     background-color: #ffffff;
@@ -52,7 +47,7 @@
     overflow: hidden;
     text-overflow:ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     width:100%;
 }

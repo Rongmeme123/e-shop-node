@@ -23,6 +23,7 @@
                             <th>catid</th>
                             <th>name</th>
                             <th>price</th>
+                            <th>image</th>
                             <th>description</th>
                         </tr>
                     </thead>
@@ -33,6 +34,7 @@
                             <td><%=item.catid%></td>
                             <td><%=item.name%></td>
                             <td><%=item.price%></td>
+                            <td><a href="<%=item.image%>" target="_blank">image</a></td>
                             <td><%=item.description%></td>
                             <td>
                                 <input class="btn btn-sm btn-primary" type="button" value="update" data-toggle="modal"
@@ -74,26 +76,30 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form id="productForm">
                                 <div class="form-group" id="cateSelectWrap" style="display: none">
                                     <label for="catSelect">category select</label>
-                                    <select class="form-control" id="catSelect">
+                                    <select class="form-control" id="catSelect" name="catid">
                                         <%categories.forEach((item) => {%>
-                                        <option data-id="<%=item.catid%>"><%=item.name%></option>
+                                        <option value="<%=item.catid%>"><%=item.name%></option>
                                         <%})%>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="pdNameInput">name</label>
-                                    <input type="text" class="form-control" id="pdNameInput" placeholder="enter name">
+                                    <input type="text" class="form-control" id="pdNameInput" name="name" placeholder="enter name">
                                 </div>
                                 <div class="form-group">
                                     <label for="pdPriceInput">price</label>
-                                    <input type="text" class="form-control" id="pdPriceInput" placeholder="enter price">
+                                    <input type="text" class="form-control" id="pdPriceInput" name="price" placeholder="enter price">
                                 </div>
                                 <div class="form-group">
                                     <label for="pdDesTextarea">description</label>
-                                    <textarea class="form-control" id="pdDesTextarea" placeholder="enter description"></textarea>
+                                    <textarea class="form-control" id="pdDesTextarea" name="description" placeholder="enter description"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pdImage">image</label><br/>
+                                    <input type="file" id="pdImage" name="image" />
                                 </div>
                             </form>
                         </div>

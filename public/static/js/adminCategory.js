@@ -15,11 +15,13 @@ $('#deleteModal').on('show.bs.modal', function(event) {
             catid: catid
         })
         .then(function(response) {
+            // hide modal
+            modal.modal('hide');
             if (response.data && response.data.code === 200){
-                // hide modal
-                modal.modal('hide');
                 // remove this record
                 tr.remove();
+            } else {
+                alert(response.data.msg);
             }
         })
         .catch(function (error) {
