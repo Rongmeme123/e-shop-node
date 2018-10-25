@@ -21,8 +21,8 @@ router.get('/', async (ctx, next) => {
     await ctx.render('business/category', {
         title: 'category page',
         page: 'category',
-        css: '/statics/css/businessCategory',
-        js: '/statics/js/businessCategory',
+        css: '/static/css/businessCategory',
+        js: '/static/js/businessCategory',
         categories,
         products,
         currentCategory,
@@ -58,8 +58,8 @@ router.get('/product', async (ctx, next) => {
     await ctx.render('business/product', {
         title: 'product page',
         page: 'product',
-        css: '/statics/css/businessProduct',
-        js: '/statics/js/businessProduct',
+        css: '/static/css/businessProduct',
+        js: '/static/js/businessProduct',
         categories,
         product,
         currentCategory,
@@ -72,8 +72,8 @@ router.get('/admin', async (ctx, next) => {
     await ctx.render('admin', {
         title: 'admin page',
         page: 'admin',
-        css: '/statics/css/admin',
-        js: '/statics/js/admin',
+        css: '/static/css/admin',
+        js: '/static/js/admin',
     });
 });
 
@@ -83,8 +83,8 @@ router.get('/admin/category', async (ctx, next) => {
     await ctx.render('admin/category', {
         title: 'admin category page',
         page: 'category',
-        css: '/statics/css/adminCategory',
-        js: '/statics/js/adminCategory',
+        css: '/static/css/adminCategory',
+        js: '/static/js/adminCategory',
         categories,
     });
 });
@@ -96,8 +96,8 @@ router.get('/admin/product', async (ctx, next) => {
     await ctx.render('admin/product', {
         title: 'admin product page',
         page: 'product',
-        css: '/statics/css/adminProduct',
-        js: '/statics/js/adminProduct',
+        css: '/static/css/adminProduct',
+        js: '/static/js/adminProduct',
         products,
         categories,
     });

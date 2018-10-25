@@ -40,7 +40,7 @@ $('#editModal').on('show.bs.modal', function(event) {
         var name = tr.find('td:eq(2)').text();
         var price = tr.find('td:eq(3)').text();
         var description = tr.find('td:eq(5)').text();
-        console.log(name, price, description)
+        // console.log(name, price, description)
         modal.find('#pdNameInput').val(name);
         modal.find('#pdPriceInput').val(price);
         modal.find('#pdDesTextarea').val(description);
@@ -55,6 +55,11 @@ $('#editModal').on('show.bs.modal', function(event) {
     });
     modal.find('._ok').off('click').on('click', function() {
         let formData = new FormData($('#productForm')[0]);
+        // check price is number
+        if (!/^\d+$/.test(formData.get('price'))) {
+            alert('price is not a number');
+            return;
+        }
         pid && formData.append('pid', pid);
         axios({
             url: '/api/updateProduct',
@@ -64,13 +69,6 @@ $('#editModal').on('show.bs.modal', function(event) {
             },
             data: formData
         })
-        // axios.post('/api/updateProduct', {
-        //     pid: pid,
-        //     catid: $('#catSelect').val(),
-        //     name: modal.find('#pdNameInput').val(),
-        //     price: modal.find('#pdPriceInput').val(),
-        //     description: modal.find('#pdDesTextarea').val()
-        // })
         .then(function(response) {
             if (response.data && response.data.code === 200){
                 // console.log(response.data)

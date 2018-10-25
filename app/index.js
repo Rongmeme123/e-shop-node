@@ -5,7 +5,6 @@ const bodyParser = require('koa-bodyparser');
 const views = require('koa-views');
 const router = require('koa-router')();
 const kstatic = require('koa-static');
-const mysql = require('mysql')
 
 const webRoutes = require('./routes');
 
@@ -21,7 +20,7 @@ app.use(views(path.join(__dirname, 'views'), {
 }));
 
 // apply static
-app.use(kstatic(path.resolve(__dirname, '../public/static')));
+app.use(kstatic(path.resolve(__dirname, '../public')));
 
 // apply router
 app.use(router.routes());

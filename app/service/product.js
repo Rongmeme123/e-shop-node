@@ -2,8 +2,8 @@ const db = require('../db');
 const { webConfig } = require('../config');
 
 const updateProductsByImage = (products) => products.map(product => Object.assign({}, product, {
-    image: `//${webConfig.hostname}/statics/upload/product${product.pid}.jpg`,
-    image_thumbnail: `//${webConfig.hostname}/statics/upload/product${product.pid}_thumbnail.jpg`
+    image: `//${webConfig.hostname}/static/upload/product${product.pid}.jpg`,
+    image_thumbnail: `//${webConfig.hostname}/static/upload/product${product.pid}_thumbnail.jpg`
 }))
 
 module.exports = {
