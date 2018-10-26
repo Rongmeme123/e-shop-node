@@ -41,7 +41,7 @@ router.get('/product', async (ctx, next) => {
     product = product[0]
     
     let currentCategory = {};
-    if (!product) {
+    if (product) {
         currentCategory = categories.filter((item) => item.catid === product.catid)[0];
     } else {
         currentCategory = {
