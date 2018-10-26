@@ -115,7 +115,7 @@ router.post('/updateProduct', async (ctx, next) => {
                 packet = await productService.addOne(catid, name, price, description);
             }
 
-            if (img) {
+            if (img.size > 0) {
                 let imgId = packet.insertId || pid;
                 let imgUrl = path.join(imageConfig.uploadDir, `product${imgId}.jpg`);
                 let imgThumbnailUrl = path.join(imageConfig.uploadDir, `product${imgId}_thumbnail.jpg`);
