@@ -1,6 +1,6 @@
 <ul class="grid">
     <%products.forEach(function(item){%>
-        <li class="g-item">
+        <li class="g-item" data-pid="<%=item.pid%>" data-name="<%=item.name%>">
             <a class="g-item-wrap" href="./product?pid=<%=item.pid%>">
                 <div class="p-img">
                     <img src="<%=item.image_thumbnail%>" alt="">

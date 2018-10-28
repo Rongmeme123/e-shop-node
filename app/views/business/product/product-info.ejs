@@ -1,7 +1,7 @@
-<div class="product-intro">
+<div class="product-intro" data-pid="<%=product.pid%>">
     <div class="preview-wrap">
         <div class="preview">
-            <img src="<%=product.image%>" alt="Apple iPhone XS Max">
+            <img src="<%=product.image%>" alt="<%=product.name%>">
         </div>
     </div>
     <div class="info-wrap">
@@ -18,8 +18,8 @@
             <em class="counter-btn add">+</em>
         </div>
         <div class="btns">
-            <input type="button" class="btn btn-big" value="ADD TO CART"/>
-            <input type="button" class="btn btn-big btn-buy" value="TO PAYPAL"/>
+            <input type="button" class="btn btn-big _btn-add" value="ADD TO CART"/>
+            <input type="button" class="btn btn-big btn-buy _btn-buy" value="TO PAYPAL"/>
         </div>
     </div>
 </div>

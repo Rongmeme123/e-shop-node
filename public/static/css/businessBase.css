@@ -186,6 +186,7 @@ input[type=button] {
 
 .mini-cart-counter {
     height: 20px;
+    user-select: none;
 }
 
 .mini-cart-counter .counter-btn {

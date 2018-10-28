@@ -168,4 +168,18 @@ router.post('/deleteProduct', async (ctx, next) => {
     await next(ctx);
 });
 
+router.post('/getProductsByPids', async (ctx, next) => {
+    const pids = ctx.request.body['pids'];
+    let result = [];
+    if (pids.length > 0) {
+        result = await productService.queryByPids(pids);
+    }
+    ctx.body = {
+        code: 200,
+        data: result,
+    };
+    await next(ctx);
+
+});
+
 module.exports = router;

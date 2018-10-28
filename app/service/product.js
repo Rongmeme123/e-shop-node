@@ -21,6 +21,11 @@ module.exports = {
         return updateProductsByImage(result);
     },
 
+    queryByPids: async (pids) => {
+        const result = await db.query(`select * from product where pid in (${pids.join(',')})`);
+        return updateProductsByImage(result);
+    },
+
     addOne: async (catid, name, price, description) => {
         const result = await db.query('insert into product(catid, name, price, description) values(?, ?, ?, ?)', [catid, name, price, description]);
         return result;
