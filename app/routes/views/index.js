@@ -19,6 +19,7 @@ router.get('/', async (ctx, next) => {
     const products = await productService.queryProductsByCatid(currentCategory.catid);
 
     await ctx.render('business/category', {
+        csrf: ctx.csrf,
         title: 'category page',
         page: 'category',
         css: '/static/css/businessCategory',
@@ -56,6 +57,7 @@ router.get('/product', async (ctx, next) => {
     }
 
     await ctx.render('business/product', {
+        csrf: ctx.csrf,
         title: 'product page',
         page: 'product',
         css: '/static/css/businessProduct',
@@ -70,6 +72,7 @@ router.get('/product', async (ctx, next) => {
 
 router.get('/admin', async (ctx, next) => {
     await ctx.render('admin', {
+        csrf: ctx.csrf,
         title: 'admin page',
         page: 'admin',
         css: '/static/css/admin',
@@ -77,10 +80,20 @@ router.get('/admin', async (ctx, next) => {
     });
 });
 
+router.get('/admin/login', async (ctx, next) => {
+    await ctx.render('admin/login', {
+        csrf: ctx.csrf,
+        title: 'admin login',
+        page: 'admin login',
+        css: '/static/css/adminLogin',
+        js: '/static/js/adminLogin',
+    });
+});
+
 router.get('/admin/category', async (ctx, next) => {
     const categories = await categoryService.queryAll();
-
     await ctx.render('admin/category', {
+        csrf: ctx.csrf,
         title: 'admin category page',
         page: 'category',
         css: '/static/css/adminCategory',
@@ -94,6 +107,7 @@ router.get('/admin/product', async (ctx, next) => {
     const categories = await categoryService.queryAll();
 
     await ctx.render('admin/product', {
+        csrf: ctx.csrf,
         title: 'admin product page',
         page: 'product',
         css: '/static/css/adminProduct',
@@ -101,6 +115,14 @@ router.get('/admin/product', async (ctx, next) => {
         products,
         categories,
     });
+});
+
+// other pages => 404
+router.get('*', async (ctx, next) => {
+    let url = ctx.request.url;
+    if (!/\.je*pg|\.js|\.css|\.map/.test(url)) {
+        await ctx.redirect('/')
+    }
 });
 
 module.exports = router;

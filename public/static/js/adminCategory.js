@@ -30,6 +30,20 @@ $('#deleteModal').on('show.bs.modal', function(event) {
     });
 });
 
+function validateForm(name) {
+    var flag = true;
+    var msg = '';
+    if (name.length === 0) {
+        flag = false;
+        msg = 'product name cannot be empty';
+    } else if (name.length > 20) {
+        flag = false;
+        msg = 'length of product name cannot be lt 20';
+    }
+    msg && alert(msg);
+    return flag;
+}
+
 // editModal
 $('#editModal').on('show.bs.modal', function(event) {
     var modal = $(this);
@@ -51,9 +65,14 @@ $('#editModal').on('show.bs.modal', function(event) {
         modal.modal('hide');
     });
     modal.find('._ok').off('click').on('click', function() {
+        var name = modal.find('#catNameInput').val();
+        // validate
+        var isOk = validateForm(name.trim());
+        if (!isOk) return;
+
         axios.post('/api/updateCategory', {
             catid: catid,
-            name: modal.find('#catNameInput').val()
+            name: name,
         })
         .then(function(response) {
             if (response.data && response.data.code === 200){

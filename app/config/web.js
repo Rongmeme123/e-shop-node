@@ -1,4 +1,6 @@
 module.exports = {
-    hostname: '18.136.50.163'
-    // hostname: 'localhost:3000'
+    hostname: {
+        normal: 's19.ierg4210.ie.cuhk.edu.hk',
+        ssl: 'secure.s19.ierg4210.ie.cuhk.edu.hk'
+    }
 }

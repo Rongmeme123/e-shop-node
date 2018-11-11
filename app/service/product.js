@@ -2,8 +2,8 @@ const db = require('../db');
 const { webConfig } = require('../config');
 
 const updateProductsByImage = (products) => products.map(product => Object.assign({}, product, {
-    image: `//${webConfig.hostname}/static/upload/product${product.pid}.jpg`,
-    image_thumbnail: `//${webConfig.hostname}/static/upload/product${product.pid}_thumbnail.jpg`
+    image: `/static/upload/product${product.pid}.jpg`,
+    image_thumbnail: `/static/upload/product${product.pid}_thumbnail.jpg`
 }))
 
 module.exports = {
@@ -22,7 +22,12 @@ module.exports = {
     },
 
     queryByPids: async (pids) => {
-        const result = await db.query(`select * from product where pid in (${pids.join(',')})`);
+        // const result = await db.query(`select * from product where pid in (${pids.join(',')})`);
+        let holderStr = '?';
+        for(let i = 1; i < pids.length; i ++) {
+            holderStr += ',?';
+        }
+        const result = await db.query(`select * from product where pid in (${holderStr})`, pids);
         return updateProductsByImage(result);
     },
 

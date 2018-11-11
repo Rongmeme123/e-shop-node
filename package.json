@@ -23,7 +23,10 @@
     "gm": "^1.23.1",
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
+    "koa-convert": "^1.2.0",
+    "koa-csrf": "^3.0.6",
     "koa-router": "^7.4.0",
+    "koa-session": "^5.10.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
     "mysql": "^2.16.0"

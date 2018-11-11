@@ -28,6 +28,32 @@ $('#deleteModal').on('show.bs.modal', function(event) {
     });
 });
 
+function validateForm(name, price, description) {
+    var flag = true;
+    var msg = '';
+    if (name.length === 0) {
+        flag = false;
+        msg = 'name cannot be empty';
+    } else if (price.length === 0) {
+        flag = false;
+        msg = 'price cannot be empty';
+    } else if (description.length === 0) {
+        flag = false;
+        msg = 'description cannot be empty';
+    } else if (name.length > 20) {
+        flag = false;
+        msg = 'length of product name cannot be lt 20';
+    } else if (!/^\d+$/.test(price)) {
+        flag = false;
+        msg = 'price is not a number';
+    } else if (description.length > 1000) {
+        flag = false;
+        msg = 'length of product description cannot be lt 1000';
+    }
+    msg && alert(msg);
+    return flag;
+}
+
 // editModal
 $('#editModal').on('show.bs.modal', function(event) {
     var modal = $(this);
@@ -55,11 +81,10 @@ $('#editModal').on('show.bs.modal', function(event) {
     });
     modal.find('._ok').off('click').on('click', function() {
         let formData = new FormData($('#productForm')[0]);
-        // check price is number
-        if (!/^\d+$/.test(formData.get('price'))) {
-            alert('price is not a number');
-            return;
-        }
+        // validate
+        var isOk = validateForm(formData.get('name').trim(), formData.get('price').trim(), formData.get('description').trim());
+        if (!isOk) return;
+
         pid && formData.append('pid', pid);
         axios({
             url: '/api/updateProduct',

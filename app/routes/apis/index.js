@@ -22,19 +22,29 @@ router.post('/getAllCategories', async (ctx, next) => {
 router.post('/updateCategory', async (ctx, next) => {
     const catid = ctx.request.body['catid'];
     const name = ctx.request.body['name'];
-    let result;
-    if (!catid) {
+    let result = null;
+    let ret = {
+        code: 200,
+        data: null,
+        msg: ''
+    }
+
+    // validate
+    if (!name) {
+        ret.code = 201;
+        ret.msg = 'name is required';
+    }
+
+    if (name.length > 20) {
+        ret.code = 201;
+        ret.msg = 'length of category name must be less than 20';
+    } else if (!catid) {
         result = await categoryService.addOne(name);
     } else {
         result = await categoryService.updateOne(catid, name);
     }
 
-    console.log(result);
-
-    ctx.body = {
-        code: 200,
-        data: null,
-    };
+    ctx.body = ret;
     await next(ctx);
 });
 
