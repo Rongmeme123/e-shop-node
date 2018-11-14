@@ -1,0 +1,19 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link<%=page=='userInfo'?' active':''%>" href="/user">
+                    info
+                </a>
+                <a class="nav-link<%=page=='changePwd'?' active':''%>" href="/user/changePwd">
+                    changePwd
+                </a>
+                <%if(isAdmin){%>
+                    <a class="nav-link" href="/admin">
+                        admin
+                    </a>
+                <%}%>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,20 +1,22 @@
-const db = require('../db');
+const category = require('../dao').category;
 
-module.exports = {
+const collection = {
     queryAll: async () => {
-        const result = await db.query('select * from category');
+        const result = await category.queryAll();
         return result;
     },
     addOne: async (name) => {
-        const result = await db.query('insert into category(name) values(?)', [name]);
+        const result = await category.addOne(name);
         return result;
     },
     updateOne: async (catid, name) => {
-        const result = await db.query('update category set name=? where catid=?', [name, catid]);
+        const result = await category.updateOne(catid, name);
         return result;
     },
     deleteOne: async (catid) => {
-        const result = await db.query('delete from category where catid=?', [catid]);
+        const result = await category.deleteOne(catid);
         return result;
     },
-}
+};
+
+module.exports = collection;

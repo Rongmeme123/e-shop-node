@@ -1,47 +1,43 @@
-const db = require('../db');
-const { webConfig } = require('../config');
+const product = require('../dao').product;
 
 const updateProductsByImage = (products) => products.map(product => Object.assign({}, product, {
     image: `/static/upload/product${product.pid}.jpg`,
     image_thumbnail: `/static/upload/product${product.pid}_thumbnail.jpg`
 }))
 
-module.exports = {
+const collection = {
     queryAll: async () => {
-        const result = await db.query(`select * from product`);
+        const result = await product.queryAll();
         return updateProductsByImage(result);
     },
     queryProductsByCatid: async (catid) => {
-        const result = await db.query('select * from product where catid=?', [catid]);
+        const result = await product.queryByCatid(catid);
         return updateProductsByImage(result);
     },
 
     queryOneByPid: async (pid) => {
-        const result = await db.query('select * from product where pid=?', [pid]);
-        return updateProductsByImage(result);
+        const result = await product.queryOne(pid);
+        return updateProductsByImage([result])[0];
     },
 
     queryByPids: async (pids) => {
-        // const result = await db.query(`select * from product where pid in (${pids.join(',')})`);
-        let holderStr = '?';
-        for(let i = 1; i < pids.length; i ++) {
-            holderStr += ',?';
-        }
-        const result = await db.query(`select * from product where pid in (${holderStr})`, pids);
+        const result = await product.queryByPids(pids);
         return updateProductsByImage(result);
     },
 
     addOne: async (catid, name, price, description) => {
-        const result = await db.query('insert into product(catid, name, price, description) values(?, ?, ?, ?)', [catid, name, price, description]);
+        const result = await product.addOne(catid, name, price, description);
         return result;
     },
     updateOne: async (pid, name, price, description) => {
-        const result = await db.query('update product set name=?, price=?, description=? where pid=?', [name, price, description, pid]);
+        const result = await product.updateOne(pid, name, price, description)
         return result;
     },
     
     deleteOne: async (pid) => {
-        const result = await db.query('delete from product where pid=?', [pid]);
+        const result = await product.deleteOne(pid);
         return result;
     },
-}
+};
+
+module.exports = collection;

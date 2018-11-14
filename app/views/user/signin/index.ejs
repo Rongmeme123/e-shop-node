@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/static/css/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=css%>.css">
+</head>
+<body class="text-center">
+    <input type="hidden" id="_csrf" value="<%= csrf %>" />
+    <div class="sign-container">
+        <h1 class="h3 mb-3 font-weight-normal">e-shop sign in</h1>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link<%=activeTab===0?' active':''%>" id="sign-in" data-toggle="tab" href="#sign-in-panel" role="tab" aria-controls="sign-in-panel" aria-selected="true">Sign in</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link<%=activeTab===1?' active':''%>" id="sign-up" data-toggle="tab" href="#sign-up-panel" role="tab" aria-controls="sign-up-panel"
+                    aria-selected="false">Sign up</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade<%=activeTab===0?' active show':''%>" id="sign-in-panel" role="tabpanel" aria-labelledby="sign-in">
+                <form class="form-signin">
+                    <label for="signinEmail" class="sr-only">Email address</label>
+                    <input type="email" id="signinEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                    <label for="signinPassword" class="sr-only">Password</label>
+                    <input type="password" id="signinPassword" class="form-control" placeholder="Password" required autocomplete="off">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="isRemember" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block mt-3" id="signin" type="button">Sign in</button>
+                </form>
+            </div>
+            <div class="tab-pane fade<%=activeTab===1?' active show':''%>" id="sign-up-panel" role="tabpanel" aria-labelledby="sign-up">
+                <form class="form-signin">
+                    <label for="signupEmail" class="sr-only">Email address</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                    <label for="signupUsername" class="sr-only">User Name</label>
+                    <input type="email" id="signupUsername" class="form-control" placeholder="User name" required="">
+                    <label for="signupPassword" class="sr-only">Password</label>
+                    <input type="password" id="signupPassword" class="form-control" placeholder="Password" required="" autocomplete="off">
+                    <label for="repeatPassword" class="sr-only">Password</label>
+                    <input type="password" id="repeatPassword" class="form-control" placeholder="Repeat Password" required="" autocomplete="off">
+                    <button class="btn btn-lg btn-primary btn-block mt-3" id="signup" type="button">Sign up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/libs/jquery-3.3.1.slim.min.js"></script>
+    <script src="/static/js/libs/bootstrap.min.js"></script>
+    <script src="/static/js/libs/axios.min.js"></script>
+    <script src="/static/js/core.js"></script>
+    <script src="<%= js %>.js"></script>
+</body>
+
+</html>

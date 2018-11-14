@@ -10,12 +10,16 @@ const session = require('koa-session');
 const CSRF = require('koa-csrf');
 
 const webRoutes = require('./routes');
+const middlewares = require('./middlewares');
 
-// set the session keys
-app.keys = [ 'foo', 'bar' ];
+// set the session keys 加密字符串
+app.keys = [ 'e-shop secret keys' ];
 
 // add session support
 app.use(session(app));
+
+// apply custom middleware
+app.use(middlewares);
 
 // apply body parser
 app.use(bodyParser({

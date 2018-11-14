@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include ./common/html-head %>
+  <body>
+    <!-- https://getbootstrap.com/docs/4.1/examples/dashboard/ -->
+    <% include ./common/header %>
+    <div class="container-fluid">
+      <div class="row"><% include ./common/side-nav %></div>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <form class="form-center">
+            <label for="userName" class="sr-only">userName</label>
+            <input type="text" id="userName" class="form-control" placeholder="userName" required="" autofocus="" value="<%=userName%>">
+            <button class="btn btn-lg btn-primary btn-block mt-3" id="_changeUserName" type="button">Change UserName</button>
+        </form>
+      </main>
+    </div>
+    <% include ./common/footer %>
+  </body>
+</html>
