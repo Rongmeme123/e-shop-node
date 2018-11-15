@@ -50,8 +50,8 @@ const collection = {
         return result;
     },
     clearauthToken: (ctx) => {
-        ctx.cookies.set('auth', null);
-        ctx.cookies.set('isLogin', null);
+        ctx.cookies.set('auth', '', {signed: false, maxAge: 0});
+        ctx.cookies.set('isLogin', '', {signed: false, maxAge: 0});
     }
 }
 
