@@ -1,6 +1,6 @@
 const user = require('../dao').user;
 const jwt = require('jsonwebtoken');
-const { jwtConfig } = require('../config')
+const { jwtConfig, cookieConfig } = require('../config')
 
 const collection = {
     verifyAuthToken: async (token) => {
@@ -50,8 +50,9 @@ const collection = {
         return result;
     },
     clearauthToken: (ctx) => {
-        ctx.cookies.set('auth', '', {signed: false, maxAge: 0});
-        ctx.cookies.set('isLogin', '', {signed: false, maxAge: 0});
+        let cnf = Object.assign({}, cookieConfig, {maxAge: 0});
+        ctx.cookies.set('auth', '', cnf);
+        ctx.cookies.set('isLogin', '', cnf);
     }
 }
 
