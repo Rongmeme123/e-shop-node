@@ -18,10 +18,12 @@ app.keys = [ 'e-shop secret keys' ];
 // trust proxy header fields
 app.proxy = true;
 
+// enable setcookie secure:true
+// https://github.com/koajs/koa/issues/974
 app.use(async (ctx, next) => {
     ctx.cookies.secure = true;
     await next();
-})
+});
 
 // add session support
 app.use(session(app));
