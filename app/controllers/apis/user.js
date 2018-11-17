@@ -100,8 +100,12 @@ module.exports = {
                 }, jwtConfig.secret, {
                     expiresIn: '3 days'
                 });
-                ctx.cookies.set('auth', token, cookieConfig);
-                ctx.cookies.set('isLogin', 1, Object.assign({}, cookieConfig, {httpOnly: false}));
+                let copyConfig = Object.assign({}, cookieConfig);
+                if (!isRemember) {
+                    delete copyConfig.maxAge;
+                }
+                ctx.cookies.set('auth', token, copyConfig);
+                ctx.cookies.set('isLogin', 1, Object.assign({}, copyConfig, {httpOnly: false}));
                 await next(ctx);
                 return;
             } else {
@@ -163,8 +167,8 @@ module.exports = {
         const result = await userService.updateUserName(userId, userName);
         ctx.body = {
             code: 200,
-            data: user,
-            msg: null
+            data: null,
+            msg: ''
         };
         await next(ctx);
     },

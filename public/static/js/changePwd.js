@@ -33,7 +33,7 @@ $('#_changePwd').off('click').on('click', function() {
     })
     .then(function(response) {
         if (response.data && response.data.code === 200){
-            location.href = '/';
+            location.href = '/signin';
         }
     })
     .catch(function (error) {
