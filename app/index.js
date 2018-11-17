@@ -18,6 +18,11 @@ app.keys = [ 'e-shop secret keys' ];
 // trust proxy header fields
 app.proxy = true;
 
+app.use(async (ctx, next) => {
+    ctx.cookies.secure = true;
+    await next();
+})
+
 // add session support
 app.use(session(app));
 
