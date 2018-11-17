@@ -32,8 +32,13 @@ $('#_changePwd').off('click').on('click', function() {
         password: password
     })
     .then(function(response) {
-        if (response.data && response.data.code === 200){
-            location.href = '/signin';
+        var data = response.data;
+        if (data)  {
+            if (data.code === 200) {
+                location.href = '/signin';
+            } else {
+                alert(data.msg);
+            }
         }
     })
     .catch(function (error) {

@@ -21,9 +21,14 @@ $('#_changeUserName').off('click').on('click', function() {
         userName: userName
     })
     .then(function(response) {
-        if (response.data && response.data.code === 200){
-            alert('update successfully!');
-            location.reload();
+        var data = response.data;
+        if (data)  {
+            if (data.code === 200) {
+                alert('update successfully!');
+                location.reload();
+            } else {
+                alert(data.msg);
+            }
         }
     })
     .catch(function (error) {
