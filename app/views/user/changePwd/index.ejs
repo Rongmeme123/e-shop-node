@@ -8,10 +8,12 @@
       <div class="row"><% include ../common/side-nav %></div>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <form class="form-center">
+            <label for="oldPassword" class="sr-only">oldPassword</label>
+            <input type="password" id="oldPassword" class="form-control" placeholder="old password" required="" autofocus="" >
             <label for="password" class="sr-only">password</label>
-            <input type="password" id="password" class="form-control" placeholder="password" required="" autofocus="" >
+            <input type="password" id="password" class="form-control" placeholder="new password" required="" autofocus="" >
             <label for="repeatPassword" class="sr-only">repeatPassword</label>
-            <input type="password" id="repeatPassword" class="form-control" placeholder="repeatPassword" required="" autofocus="" >
+            <input type="password" id="repeatPassword" class="form-control" placeholder="repeat password" required="" autofocus="" >
             <button class="btn btn-lg btn-primary btn-block mt-3" id="_changePwd" type="button">Change Password</button>
         </form>
       </main>

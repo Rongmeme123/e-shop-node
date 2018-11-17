@@ -29,8 +29,9 @@ router.get('/favicon.ico', async (ctx, next) => {
 
 router.get('*', async (ctx, next) => {
     let url = ctx.request.url;
+    // console.log(`request other ------- ${url}`);
     if (!/\.je*pg|\.png|\.js|\.css|\.map/.test(url)) {
-        await ctx.redirect('/')
+        ctx.redirect('/')
     }
 });
 

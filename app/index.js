@@ -18,9 +18,6 @@ app.keys = [ 'e-shop secret keys' ];
 // add session support
 app.use(session(app));
 
-// apply custom middleware
-app.use(middlewares);
-
 // apply body parser
 app.use(bodyParser({
     "formLimit": "10mb",
@@ -44,9 +41,11 @@ app.use(new CSRF({
     disableQuery: false
 }));
 
+// apply custom middleware
+app.use(middlewares);
+
 // apply router
 app.use(router.routes());
-
 
 // router.use('', webRoutes.routes(), webRoutes.allowedMethods());
 router.use(webRoutes.routes())

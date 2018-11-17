@@ -5,3 +5,8 @@
 .table-title .btn-new {
     float: right;
 }
+
+.image-thumbnail {
+    width: 100px;
+    height: 100px;
+}

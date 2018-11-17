@@ -178,7 +178,7 @@ var _eShop = window._eShop || {
                 data = response.data.data;
                 $('._login_group').html(`
                 <span id="_personality"><a href="/user">${data.name}</a></span>
-                <span id="_logout">退出</span>
+                <span id="_logout">signout</span>
                 `);
                 $('#_logout').off().on('click', function() {
                     axios.post('/api/logout', null)

@@ -34,7 +34,8 @@
                             <td><%=item.catid%></td>
                             <td><%=item.name%></td>
                             <td><%=item.price%></td>
-                            <td><a href="<%=item.image%>" target="_blank">image</a></td>
+                            <td><img class="image-thumbnail" src="<%=item.image_thumbnail%>" alt="<%=item.name%>" /></td>
+                                <!-- <a href="<%=item.image%>" target="_blank">image</a></td> -->
                             <td><%=item.description%></td>
                             <td>
                                 <input class="btn btn-sm btn-primary" type="button" value="update" data-toggle="modal"

@@ -9,18 +9,26 @@ const jwtMiddleware = async (ctx, next) => {
     const isInAuth = authPathList.some((item) => item.test(url))
     if (isInAuth) {
         const token = ctx.cookies.get('auth');
-        jwt.verify(token, jwtConfig.secret, async (err, decoded) => {
-            if (err) {
-                // failed to verify token and redirect to index
-                ctx.redirect('/');
-            }
-
-            let userId = decoded.userId;
-            let user = await userService.queryOne(userId);
-            if (user.isadmin === 0) ctx.redirect('/');
+        await new Promise((resolve) => {
+            jwt.verify(token, jwtConfig.secret, async (err, decoded) => {
+                if (err) {
+                    // failed to verify token and redirect to index
+                    ctx.redirect('/signin');
+                } else {
+                    let userId = decoded.userId;
+                    let user = await userService.queryOne(userId);
+                    if (user.isadmin === 0) {
+                        ctx.redirect('/');
+                    } else {
+                        await next(ctx)
+                    }
+                }
+                resolve()
+            });
         });
+    } else {
+        await next(ctx);
     }
-    await next(ctx);
 }
 
 const authMiddleware = async (ctx, next) => {

@@ -170,7 +170,7 @@ module.exports = {
     },
     changePassword: async (ctx, next) => {
         const authToken = ctx.cookies.get('auth');
-        let { password } = ctx.request.body;
+        let { oldPassword, password } = ctx.request.body;
 
         let flag = true;
         let msg = '';
@@ -194,17 +194,31 @@ module.exports = {
             return;
         }
 
-        const userId = await userService.verifyAuthToken(authToken);
+        let user = await userService.getUserByToken(authToken);
+        let isPwdOk = await bcrypt.compare(oldPassword, user.password);
+        if (!isPwdOk) {
+            ctx.body = {
+                code: 201,
+                data: {},
+                msg: 'sorry, your old password is not right',
+            };
+            await next(ctx);
+            return;
+        }
 
         // 生成salt
         const salt = await bcrypt.genSalt(10)
         // 对密码进行加密
         password = await bcrypt.hash(password, salt)
-        const result = await userService.updatePassword(userId, password);
+        const result = await userService.updatePassword(user.uid, password);
 
         userService.clearauthToken(ctx);
 
-        ctx.redirect('/');
+        ctx.body = {
+            code: 200,
+            data: {},
+            msg: '',
+        };
         await next(ctx);
     }
 }

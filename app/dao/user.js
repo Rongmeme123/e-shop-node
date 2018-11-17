@@ -6,7 +6,7 @@ module.exports = {
         return result;
     },
     queryOne: async (userId) => {
-        const result = await db.query('select uid, email, isadmin, name from user where uid=?', [userId]);
+        const result = await db.query('select * from user where uid=?', [userId]);
         return result[0];
     },
     queryByEmail: async (email) => {

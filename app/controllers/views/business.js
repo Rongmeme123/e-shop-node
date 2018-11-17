@@ -11,7 +11,7 @@ module.exports = {
         if(!currentCategory) currentCategory = categories[0];
         // redirect to the first category
         if (!catid) {
-            await ctx.redirect(`/?catid=${currentCategory.catid}`)
+            ctx.redirect(`/?catid=${currentCategory.catid}`)
             return;
         }
         
@@ -31,7 +31,7 @@ module.exports = {
     product: async (ctx, next) => {
         const pid = parseInt(ctx.query.pid);
         if (!pid) {
-            await ctx.redirect('/');
+            ctx.redirect('/');
             return;
         }
     

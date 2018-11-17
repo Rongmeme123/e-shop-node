@@ -19,6 +19,7 @@ function validate(password, repeatPassword) {
 }
 
 $('#_changePwd').off('click').on('click', function() {
+    var oldPassword = $('#oldPassword').val().trim();
     var password = $('#password').val().trim();
     var repeatPassword = $('#repeatPassword').val().trim();
 
@@ -27,11 +28,12 @@ $('#_changePwd').off('click').on('click', function() {
     }
 
     axios.post('/api/changePassword', {
+        oldPassword: oldPassword,
         password: password
     })
     .then(function(response) {
         if (response.data && response.data.code === 200){
-            alert('update successfully!');
+            location.href = '/';
         }
     })
     .catch(function (error) {

@@ -4,7 +4,8 @@ const viewRoutes = require('../controllers/views');
 
 router.use('', async(ctx, next) => {
     let url = ctx.request.url;
-    console.log(url);
+    let prefix = /^\/api\//.test(url) ? 'api' : 'view';
+    console.log(`[${prefix} url] --- ${url}`);
     await next(ctx)
 })
 
