@@ -15,6 +15,9 @@ const middlewares = require('./middlewares');
 // set the session keys 加密字符串
 app.keys = [ 'e-shop secret keys' ];
 
+// trust proxy header fields
+app.proxy = true;
+
 // add session support
 app.use(session(app));
 
