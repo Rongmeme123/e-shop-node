@@ -1,8 +1,8 @@
 const userService = require('../../service').user;
+const productService = require('../../service').product;
 const { jwtConfig, cookieConfig } = require('../../config');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
 
 function validateEmail(email) {
     var emailReg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
@@ -224,7 +224,7 @@ module.exports = {
             msg: '',
         };
         await next(ctx);
-    }
+    },
 }
 // admin
 // email:admin@hetty.com  password:admin123123

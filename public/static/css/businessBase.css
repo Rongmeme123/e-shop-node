@@ -94,6 +94,12 @@ input[type=button] {
     line-height: 40px;
 }
 
+.nav-menu .username {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .nav-menu>span {
     padding: 0 8px;
     cursor: pointer;

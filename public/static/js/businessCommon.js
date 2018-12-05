@@ -121,6 +121,8 @@ var _eShop = window._eShop || {
             $('.mini-cart-bd').append(liHtml);
         }
 
+        window.appendToCart = appendToCart;
+
         // 点击cart里的加减号
         $(".mini-cart-bd").on('click', '.counter-btn', function(e) {
             e.preventDefault();
@@ -177,7 +179,7 @@ var _eShop = window._eShop || {
             if (response.data && response.data.code === 200){
                 data = response.data.data;
                 $('._login_group').html(`
-                <span id="_personality"><a href="/user">${data.name}</a></span>
+                <span id="_personality"><a class="username" href="/user">${data.name}</a></span>
                 <span id="_logout">signout</span>
                 `);
                 $('#_logout').off().on('click', function() {
@@ -193,10 +195,26 @@ var _eShop = window._eShop || {
                 });
             }
         })
+    },
+    initCartSubmit: function() {
+        $('#submitCart').on('click', function() {
+            var cartList = JSON.parse(localStorage.getItem('cartList'));
+            axios.post('/api/payMoney', {
+                cart: cartList
+            })
+                .then(function(response) {
+                    if (response.data && response.data.code === 200) {
+                        // 清空购物车
+                        localStorage.removeItem('cartList');
+                        // 打开新页面
+                        window.open(response.data.data);
+                    }
+                })
+        })
     }
-
 }
 
 _eShop.initNavHeaderHover();
 _eShop.initNavCartList();
 _eShop.initNavLogin();
+_eShop.initCartSubmit();

@@ -9,6 +9,14 @@ module.exports = {
         const result = await db.query('select * from user where uid=?', [userId]);
         return result[0];
     },
+    querySome: async (userIdList) => {
+        let holderStr = '?';
+        for(let i = 1; i < userIdList.length; i ++) {
+            holderStr += ',?';
+        }
+        const result = await db.query(`select * from user where uid in (${holderStr})`, userIdList);
+        return result;
+    },
     queryByEmail: async (email) => {
         const result = await db.query('select * from user where email=?', [email]);
         return result;

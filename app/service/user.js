@@ -32,11 +32,19 @@ const collection = {
         const result = await user.queryOne(userId);
         return result;
     },
+    querySome: async (userIdList) => {
+        const result = await user.querySome(userIdList);
+        return result.reduce((prev, next) => {
+            prev[next.uid] = next;
+            return prev;
+        }, {});
+    },
     queryByEmail: async (email) => {
         const result = await user.queryByEmail(email);
         return result;
     },
     getUserByToken: async (token) => {
+        if (!token) return null;
         const userId = await collection.verifyAuthToken(token);
         const user = await collection.queryOne(userId);
         return user;

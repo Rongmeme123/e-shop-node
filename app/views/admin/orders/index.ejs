@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../common/html-head %>
+
+<body>
+    <% include ../common/header %>
+    <div class="container-fluid">
+        <div class="row">
+            <% include ../common/side-nav %>
+        </div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="table-title">
+                <span class="h2">orders list</span>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>orderid</th>
+                            <th>paymentid</th>
+                            <th>username</th>
+                            <th>money</th>
+                            <th>status</th>
+                            <th>description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%orders.forEach((item) => {%>
+                        <tr>
+                            <td><%=item.oid%></td>
+                            <td><%=item.paymentid%></td>
+                            <td><%=item.user.name%></td>
+                            <td><%=item.orderinfo.split(':')[0]%> HKD</td>
+                            <td><%=item.status==0?'not paid':'completed'%></td>
+                            <td><%=item.description%></td>
+                        </tr>
+                        <%})%>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <% include ../common/footer %>
+</body>
+
+</html>

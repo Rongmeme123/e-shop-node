@@ -2,6 +2,7 @@ const router = require('koa-router')();
 const category = require('./category');
 const product = require('./product');
 const user = require('./user');
+const order = require('./order');
 
 // category
 
@@ -36,5 +37,8 @@ router.post('/logout', user.logout);
 router.post('/changeUserName', user.changeUserName);
 
 router.post('/changePassword', user.changePassword);
+
+// order
+router.post('/payMoney', order.payMoney);
 
 module.exports = router;

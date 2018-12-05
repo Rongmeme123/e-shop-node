@@ -38,7 +38,8 @@ const authMiddleware = async (ctx, next) => {
         if (error.code === 401) {
             ctx.redirect('/');
         } else {
-            console.log(error)
+            throw error
+            // ctx.response.body = JSON.stringify(error)
         }
     }
 }

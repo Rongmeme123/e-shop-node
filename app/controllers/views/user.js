@@ -1,4 +1,5 @@
 const userService = require('../../service').user;
+const orderService = require('../../service').order;
 
 module.exports = {
     signin: async (ctx, next) => {
@@ -45,6 +46,21 @@ module.exports = {
             page: 'changePwd',
             css: '/static/css/userInfo',
             js: '/static/js/changePwd',
+        });
+    },
+    orders: async (ctx, next) => {
+        const authToken = ctx.cookies.get('auth');
+        const user = await userService.getUserByToken(authToken);
+        const orders = await orderService.getRecentOrdersByUid(user.uid);
+        await ctx.render('user/orders', {
+            csrf: ctx.csrf,
+            userName: user.name,
+            isAdmin: user.isadmin,
+            title: 'user orders',
+            page: 'orders',
+            css: '/static/css/adminProduct',
+            js: '/static/js/adminProduct',
+            orders,
         });
     }
 }

@@ -1,5 +1,6 @@
 const categoryService = require('../../service').category;
 const productService = require('../../service').product;
+const orderService = require('../../service').order;
 
 module.exports = {
     index: async (ctx, next) => {
@@ -34,6 +35,17 @@ module.exports = {
             js: '/static/js/adminProduct',
             products,
             categories,
+        });
+    },
+    orders: async (ctx, next) => {
+        const orders = await orderService.getRecentOrders(10);
+        await ctx.render('admin/orders', {
+            csrf: ctx.csrf,
+            title: 'admin orders page',
+            page: 'orders',
+            css: '/static/css/adminProduct',
+            js: '/static/js/adminProduct',
+            orders,
         });
     }
 }
