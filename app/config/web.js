@@ -1,6 +1,8 @@
+const hostnameMap = {
+    'production': 'secure.s19.ierg4210.ie.cuhk.edu.hk',
+    'development': 'localhost:3000'
+}
+
 module.exports = {
-    hostname: {
-        normal: 's19.ierg4210.ie.cuhk.edu.hk',
-        ssl: 'secure.s19.ierg4210.ie.cuhk.edu.hk'
-    }
+    hostname: hostnameMap[process.env.NODE_ENV]
 }

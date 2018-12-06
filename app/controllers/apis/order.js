@@ -2,6 +2,7 @@ const orderService = require('../../service').order;
 const productService = require('../../service').product;
 const userService = require('../../service').user;
 const paypal = require('paypal-rest-sdk');
+const { webConfig } = require('../../config');
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
@@ -49,8 +50,8 @@ module.exports = {
                 "payment_method": "paypal"
             },
             "redirect_urls": {
-                "return_url": "http://localhost:3000/paySuccess",
-                "cancel_url": "http://localhost:3000/payFail"
+                "return_url": `http://${webConfig.hostname}/paySuccess`,
+                "cancel_url": `http://${webConfig.hostname}/payFail`
             },
             "transactions": [{
                 "item_list": {
