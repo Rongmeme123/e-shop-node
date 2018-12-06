@@ -29,7 +29,7 @@
                         <tr>
                             <td><%=item.oid%></td>
                             <td><%=item.paymentid%></td>
-                            <td><%=item.user.name%></td>
+                            <td><%=item.user.name||'guest'%></td>
                             <td><%=item.orderinfo.split(':')[0]%> HKD</td>
                             <td><%=item.status==0?'not paid':'completed'%></td>
                             <td><%=item.description%></td>

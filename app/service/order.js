@@ -28,7 +28,7 @@ const collection = {
         const someUsers = await userService.querySome(uidList);
         return orders.map((order) => {
             return Object.assign({}, order, {
-                user: someUsers[order.uid]
+                user: someUsers[order.uid] || {}
             });
         })
     },
