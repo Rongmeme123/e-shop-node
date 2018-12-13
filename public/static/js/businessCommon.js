@@ -207,7 +207,8 @@ var _eShop = window._eShop || {
                         // 清空购物车
                         localStorage.removeItem('cartList');
                         // 打开新页面
-                        window.open(response.data.data);
+                        var handler = window.open('', "_blank");
+                        handler.location.href = response.data.data;
                     }
                 })
         })

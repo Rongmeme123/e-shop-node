@@ -13,8 +13,8 @@ module.exports = {
         const result = await db.query('select * from orders where paymentid=?', [paymentId]);
         return result;
     },
-    addOne: async (paymentid, uid, orderinfo, description) => {
-        const result = await db.query('insert into orders (paymentid, uid, orderinfo, description) values (?,?,?,?)', [paymentid, uid, orderinfo, description]);
+    addOne: async (paymentid, uid, orderinfo, description, paylink) => {
+        const result = await db.query('insert into orders (paymentid, uid, orderinfo, description, paylink) values (?,?,?,?,?)', [paymentid, uid, orderinfo, description, paylink]);
         return result;
     },
     updateOne: async (oid, status) => {

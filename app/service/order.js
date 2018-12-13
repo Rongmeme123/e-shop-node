@@ -14,8 +14,8 @@ const collection = {
         const result = await order.queryByPaymentId(paymentId);
         return result ? result[0] : null;
     },
-    addOne: async (paymentid, uid=0, orderinfo, description) => {
-        const result = await order.addOne(paymentid, uid, orderinfo, description);
+    addOne: async (paymentid, uid=0, orderinfo, description, paylink) => {
+        const result = await order.addOne(paymentid, uid, orderinfo, description, paylink);
         return result;
     },
     updateOne: async (oid, status) => {

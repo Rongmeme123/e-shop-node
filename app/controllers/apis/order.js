@@ -86,7 +86,7 @@ module.exports = {
         // store to db
         const user = await userService.getUserByToken(authToken);
         console.log(payment.id, user ? user.uid : 0, total + ':' + orderInfo.join('|'))
-        const orderResult = await orderService.addOne(payment.id, user ? user.uid : 0, total + ':' + orderInfo.join('|'), description);
+        const orderResult = await orderService.addOne(payment.id, user ? user.uid : 0, total + ':' + orderInfo.join('|'), description, redirectLink);
         console.log(orderResult)
         ctx.body = {
             code: 200,

@@ -7,5 +7,5 @@ module.exports = {
     maxAge: 1000 * 3600 * 24 * 3,
     domain: domainMap[process.env.NODE_ENV],
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
 }

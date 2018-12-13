@@ -29,7 +29,13 @@
                             <td><%=item.oid%></td>
                             <td><%=item.paymentid%></td>
                             <td><%=item.orderinfo.split(':')[0]%> HKD</td>
-                            <td><%=item.status==0?'not paid':'completed'%></td>
+                            <td>
+                                <%if(item.status==0){%>
+                                    <a href="<%=item.paylink%>" target="_blank">not paid</a>
+                                <%}else{%>
+                                    completed
+                                <%}%>
+                            </td>
                             <td><%=item.description%></td>
                         </tr>
                         <%})%>
