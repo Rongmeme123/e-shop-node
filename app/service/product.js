@@ -17,7 +17,11 @@ const collection = {
 
     queryOneByPid: async (pid) => {
         const result = await product.queryOne(pid);
-        return updateProductsByImage([result])[0];
+        if (result) {
+            return updateProductsByImage([result])[0];
+        } else {
+            return null;
+        }
     },
 
     queryByPids: async (pids) => {

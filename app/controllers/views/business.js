@@ -37,21 +37,13 @@ module.exports = {
     
         const categories = await categoryService.queryAll();
         let product = await productService.queryOneByPid(pid);
-        
-        let currentCategory = {};
-        if (product) {
-            currentCategory = categories.filter((item) => item.catid === product.catid)[0];
-        } else {
-            currentCategory = {
-                pid: 0,
-                catid: 0,
-                name: '',
-                price: 0,
-                description: '',
-                pic_big: 0,
-                pic_small: 0
-            }
+
+        if (!product) {
+            ctx.redirect('/');
+            return;
         }
+        
+        let currentCategory = categories.filter((item) => item.catid === product.catid)[0];;
     
         await ctx.render('business/product', {
             csrf: ctx.csrf,
