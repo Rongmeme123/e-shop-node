@@ -1,6 +1,6 @@
 const dbMap = {
-    'production': '127.0.0.1',
-    'development': '18.136.50.163'
+    'production': '127.0.0.1', // 内网地址
+    'development': '18.136.50.163' // 远程地址
 }
 
 module.exports = {

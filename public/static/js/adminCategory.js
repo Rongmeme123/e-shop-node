@@ -10,7 +10,9 @@ $('#deleteModal').on('show.bs.modal', function(event) {
     modal.find('._cancel').off('click').on('click', function() {
         modal.modal('hide');
     });
+    // off是为了防止重复绑定
     modal.find('._ok').off('click').on('click', function() {
+        // axios是用来发起ajax请求的第三方工具
         axios.post('/api/deleteCategory', {
             catid: catid
         })
@@ -56,8 +58,9 @@ $('#editModal').on('show.bs.modal', function(event) {
         catid = tr.find('td:eq(0)').text();
 
         modal.find('#catNameInput').val(name);
-        modal.find('#editModalTitle').val('update category');
+        modal.find('#editModalTitle').text('update category');
     } else {
+        modal.find('#catNameInput').val('');
         modal.find('#editModalTitle').text('new category');
     }
 
@@ -67,7 +70,7 @@ $('#editModal').on('show.bs.modal', function(event) {
     modal.find('._ok').off('click').on('click', function() {
         var name = modal.find('#catNameInput').val();
         // validate
-        var isOk = validateForm(name.trim());
+        var isOk = validateForm(name.trim()); // trim是去掉前后空格
         if (!isOk) return;
 
         axios.post('/api/updateCategory', {

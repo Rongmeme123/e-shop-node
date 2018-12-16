@@ -67,12 +67,16 @@ $('#editModal').on('show.bs.modal', function(event) {
         var price = tr.find('td:eq(3)').text();
         var description = tr.find('td:eq(5)').text();
         // console.log(name, price, description)
+        $('#cateSelectWrap').hide();
         modal.find('#pdNameInput').val(name);
         modal.find('#pdPriceInput').val(price);
         modal.find('#pdDesTextarea').val(description);
-        modal.find('#editModalTitle').val('update product');
+        modal.find('#editModalTitle').text('update product');
     } else {
         $('#cateSelectWrap').show();
+        modal.find('#pdNameInput').val('');
+        modal.find('#pdPriceInput').val('');
+        modal.find('#pdDesTextarea').val('');
         modal.find('#editModalTitle').text('new product');
     }
 
