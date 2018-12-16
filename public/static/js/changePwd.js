@@ -29,7 +29,8 @@ $('#_changePwd').off('click').on('click', function() {
 
     axios.post('/api/changePassword', {
         oldPassword: oldPassword,
-        password: password
+        password: password,
+        _csrf: $('#_csrf').val()
     })
     .then(function(response) {
         var data = response.data;

@@ -12,7 +12,8 @@ $('#deleteModal').on('show.bs.modal', function(event) {
     });
     modal.find('._ok').off('click').on('click', function() {
         axios.post('/api/deleteProduct', {
-            pid: pid
+            pid: pid,
+            _csrf: $('#_csrf').val()
         })
         .then(function(response) {
             if (response.data && response.data.code === 200){
@@ -84,17 +85,19 @@ $('#editModal').on('show.bs.modal', function(event) {
         modal.modal('hide');
     });
     modal.find('._ok').off('click').on('click', function() {
+        // 上传图片要用FormData格式
         let formData = new FormData($('#productForm')[0]);
         // validate
         var isOk = validateForm(formData.get('name').trim(), formData.get('price').trim(), formData.get('description').trim());
         if (!isOk) return;
 
+        formData.append(_csrf, $('#_csrf').val());
         pid && formData.append('pid', pid);
         axios({
-            url: '/api/updateProduct',
+            url: '/api/updateProduct?_csrf=' +$('#_csrf').val(),
             method: 'POST',
             headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data' // headers要指定内容类型为formdata格式
             },
             data: formData
         })

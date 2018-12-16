@@ -14,7 +14,8 @@ $('#deleteModal').on('show.bs.modal', function(event) {
     modal.find('._ok').off('click').on('click', function() {
         // axios是用来发起ajax请求的第三方工具
         axios.post('/api/deleteCategory', {
-            catid: catid
+            catid: catid,
+            _csrf: $('#_csrf').val()
         })
         .then(function(response) {
             // hide modal
@@ -76,6 +77,7 @@ $('#editModal').on('show.bs.modal', function(event) {
         axios.post('/api/updateCategory', {
             catid: catid,
             name: name,
+            _csrf: $('#_csrf').val()
         })
         .then(function(response) {
             if (response.data && response.data.code === 200){

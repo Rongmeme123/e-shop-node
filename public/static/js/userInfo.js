@@ -18,7 +18,8 @@ $('#_changeUserName').off('click').on('click', function() {
     }
 
     axios.post('/api/changeUserName', {
-        userName: userName
+        userName: userName,
+        _csrf: $('#_csrf').val()
     })
     .then(function(response) {
         var data = response.data;

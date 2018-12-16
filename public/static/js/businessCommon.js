@@ -49,7 +49,8 @@ var _eShop = window._eShop || {
                 });
                 if (pids.length === 0) return;
                 axios.post('/api/getProductsByPids', {
-                    pids: pids
+                    pids: pids,
+                    _csrf: $('#_csrf').val()
                 })
                     .then(function(response) {
                         if (response.data && response.data.code === 200) {
@@ -174,7 +175,9 @@ var _eShop = window._eShop || {
     initNavLogin: function() {
         var isLogin = (document.cookie.match(/isLogin=([^;]+)/) || [])[1] || '';
         if (!isLogin) return;
-        axios.post('/api/getLoginfo', null)
+        axios.post('/api/getLoginfo', {
+            _csrf: $('#_csrf').val()
+        })
         .then(function(response) {
             if (response.data && response.data.code === 200){
                 data = response.data.data;
@@ -183,7 +186,9 @@ var _eShop = window._eShop || {
                 <span id="_logout">signout</span>
                 `);
                 $('#_logout').off().on('click', function() {
-                    axios.post('/api/logout', null)
+                    axios.post('/api/logout', {
+                        _csrf: $('#_csrf').val()
+                    })
                     .then(function(response) {
                         if (response.data && response.data.code === 200){
                             $('._login_group').html(`
@@ -200,7 +205,8 @@ var _eShop = window._eShop || {
         $('#submitCart').on('click', function() {
             var cartList = JSON.parse(localStorage.getItem('cartList'));
             axios.post('/api/payMoney', {
-                cart: cartList
+                cart: cartList,
+                _csrf: $('#_csrf').val()
             })
                 .then(function(response) {
                     if (response.data && response.data.code === 200) {
