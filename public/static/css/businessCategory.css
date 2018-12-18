@@ -1,12 +1,14 @@
 .grid {
     margin-top: 20px;
+    height: 440px;
+    overflow: auto;
 }
 
 .grid .g-item {
     width: 240px;
     height: 220px;
     float: left;
-    margin: 0 2px 20px 2px;
+    margin: 0 40px 30px 40px;
     background-color: #ffffff;
 }
 

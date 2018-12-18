@@ -60,6 +60,8 @@ $('#editModal').on('show.bs.modal', function(event) {
     var modal = $(this);
     var button = $(event.relatedTarget);
     var pid;
+    // 清空uploadImage
+    window.uploadImage = null;
     if (button.data('type') === 'update') {
         // update
         var tr = button.closest('tr');
@@ -86,13 +88,20 @@ $('#editModal').on('show.bs.modal', function(event) {
     });
     modal.find('._ok').off('click').on('click', function() {
         // 上传图片要用FormData格式
-        let formData = new FormData($('#productForm')[0]);
+        var formData = new FormData($('#productForm')[0]);
+        var name = modal.find('#pdNameInput').val().trim();
+        var price = modal.find('#pdPriceInput').val().trim();
+        var description = modal.find('#pdDesTextarea').val().trim();
         // validate
-        var isOk = validateForm(formData.get('name').trim(), formData.get('price').trim(), formData.get('description').trim());
+        var isOk = validateForm(name, price, description);
         if (!isOk) return;
 
-        formData.append(_csrf, $('#_csrf').val());
         pid && formData.append('pid', pid);
+        // 如果uploadImage有值，说明拖拽了图片
+        if (!formData.get('image') && window.uploadImage) {
+            formData.append('image', window.uploadImage);
+        }
+
         axios({
             url: '/api/updateProduct?_csrf=' +$('#_csrf').val(),
             method: 'POST',
@@ -112,3 +121,35 @@ $('#editModal').on('show.bs.modal', function(event) {
         });
     });
 });
+
+// https://blog.csdn.net/sqzhao/article/details/50736357
+$('#editModal').on('dragenter dragleave dragover', function(e) {
+    e.preventDefault();
+});
+document.querySelector('#editModal').addEventListener('drop', function(e) {
+    e.preventDefault();
+    var fileList = e.dataTransfer.files;
+    console.log(fileList)
+
+    //检测是否是拖拽文件到页面的操作
+    if (fileList.length === 0) { return; };
+    //检测文件是不是图片
+    if (fileList[0].type.indexOf('image') === -1) { return; }
+
+    // 存一下图片文件
+    window.uploadImage = fileList[0];
+
+    //实例化file reader对象
+    var reader = new FileReader();
+    var img = document.createElement('img');
+
+    reader.onload = function(e) {
+        img.src = this.result;
+        // 页面上添加缩略图
+        var parent = $('#pdImage').parent();
+        $('#pdImage').remove();
+        img.width = '100';
+        parent.append(img)
+    }
+    reader.readAsDataURL(fileList[0]);
+}, false)

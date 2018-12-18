@@ -213,10 +213,18 @@ var _eShop = window._eShop || {
                         // 清空购物车
                         localStorage.removeItem('cartList');
                         // 打开新页面
-                        var handler = window.open('', "_blank");
-                        handler.location.href = response.data.data;
+                        location.href = response.data.data;
+                        // var handler = window.open('', "_blank");
+                        // handler.location.href = response.data.data;
                     }
                 })
+        })
+    },
+    initFacebookPlugin: function() {
+        var isVisible = false;
+        $('.facebook-plugin .entry').click(function() {
+            isVisible = !isVisible
+            $('.facebook-plugin').css('right', isVisible ? '0' : '-340px');
         })
     }
 }
@@ -225,3 +233,4 @@ _eShop.initNavHeaderHover();
 _eShop.initNavCartList();
 _eShop.initNavLogin();
 _eShop.initCartSubmit();
+_eShop.initFacebookPlugin();

@@ -10,8 +10,8 @@ const collection = {
         const result = await product.queryAll();
         return updateProductsByImage(result);
     },
-    queryProductsByCatid: async (catid) => {
-        const result = await product.queryByCatid(catid);
+    queryProductsByCatid: async (catid, startId=0, pageSize=9) => {
+        const result = await product.queryByCatid(catid, startId, pageSize);
         return updateProductsByImage(result);
     },
 

@@ -81,7 +81,7 @@ $('#signin').on('click', function() {
 // signup
 $('#signup').on('click', function() {
     var email = $('#signupEmail').val();
-    var username = $('#signupUsername').val().trim();
+    var username = $('#signupUsername').val();
     var password = $('#signupPassword').val();
     var repeatPassword = $('#repeatPassword').val();
     if (!validateSignup(email, username, password, repeatPassword)) {

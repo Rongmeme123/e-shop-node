@@ -5,8 +5,8 @@ module.exports = {
         const result = await db.query(`select * from product`);
         return result;
     },
-    queryByCatid: async (catid) => {
-        const result = await db.query('select * from product where catid=?', [catid]);
+    queryByCatid: async (catid, startId, pageSize) => {
+        const result = await db.query('select * from product where catid=? limit ?,?', [catid, startId, pageSize]);
         return result;
     },
 

@@ -8,10 +8,19 @@ const { imageConfig } = require('../../config');
 module.exports = {
     getProductsByCatid: async (ctx, next) => {
         const catid = ctx.request.body['catid'];
-        const products = await productService.queryProductsByCatid(catid);
+        const page = ctx.request.body['page'];
+        const pageSize = ctx.request.body['pageSize'] || 9;
+
+        // 翻页，计算id的范围
+        const startId = (page - 1) * pageSize;
+        const products = await productService.queryProductsByCatid(catid, startId, pageSize);
         ctx.body = {
             code: 200,
-            data: products,
+            data: {
+                page: page,
+                pageSize: pageSize,
+                items: products
+            },
         };
         await next(ctx);
     },
