@@ -42,14 +42,14 @@ app.use(views(path.join(__dirname, 'views'), {
 app.use(kstatic(path.resolve(__dirname, '../public')));
 
 // add the CSRF middleware
-// app.use(new CSRF({
-//     invalidSessionSecretMessage: 'Invalid session secret',
-//     invalidSessionSecretStatusCode: 403,
-//     invalidTokenMessage: 'Invalid CSRF token',
-//     invalidTokenStatusCode: 403,
-//     excludedMethods: [ 'GET', 'HEAD', 'OPTIONS' ],
-//     disableQuery: false
-// }));
+app.use(new CSRF({
+    invalidSessionSecretMessage: 'Invalid session secret',
+    invalidSessionSecretStatusCode: 403,
+    invalidTokenMessage: 'Invalid CSRF token',
+    invalidTokenStatusCode: 403,
+    excludedMethods: [ 'GET', 'HEAD', 'OPTIONS' ],
+    disableQuery: false
+}));
 
 // apply custom middleware
 app.use(middlewares);

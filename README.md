@@ -8,7 +8,11 @@ ajax and views routes are in route directory and templates are in views director
 
 ### phase6
 
-1. Including Facebook plugin in the main page.
-2. SEO: Apply search engine optimized (or user-friendly) URLs when browsing products.
+1. Including Facebook plugin in the main page. 
+    - facebook iframe
+2. SEO: Apply search engine optimized (or user-friendly) URLs when browsing products. 
+    - nginx rewrite
 3. Supporting pagination/AJAX infinite scroll when browsing products in the main page.
+    - ajax when scroll to bottom
 4. Supporting HTML5 Drag-and-drop file selection in the admin panel
+    - dragEvent
